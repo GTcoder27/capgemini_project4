@@ -30,6 +30,41 @@ stages {
             '''
         }
     }
+    
+    stage('Performance Gate') {
+        steps {
+        script {
+        def total = 0
+        def failed = 0
+        
+                def lines = readFile('results.jtl').split("\n")
+        
+                for (int i = 1; i < lines.length; i++) {
+                    def cols = lines[i].split(",")
+        
+                    if (cols.length > 7) {
+                        total++
+                        if (cols[7] == "false") {
+                            failed++
+                        }
+                    }
+                }
+        
+                def errorRate = (failed * 100.0) / total
+        
+                echo "Total Requests: ${total}"
+                echo "Failed Requests: ${failed}"
+                echo "Error Rate: ${errorRate}%"
+        
+                if (errorRate > 2) {
+                    error "❌ Performance Gate Failed: Error rate > 2%"
+                } else {
+                    echo "✅ Performance Gate Passed"
+                }
+            }
+        }
+
+    }
 
     stage('Archive Report') {
         steps {
