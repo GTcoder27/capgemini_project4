@@ -10,7 +10,7 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="banking website">
-        <intProp name="ThreadGroup.num_threads">500</intProp>
+        <intProp name="ThreadGroup.num_threads">50</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -28,9 +28,9 @@
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Login" enabled="true"/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Login"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/-4" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/-4">
             <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
             <stringProp name="HTTPSampler.port">0</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -75,7 +75,7 @@
             <stringProp name="RandomTimer.range">100.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login.jsp-6" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/login.jsp-6">
             <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
             <stringProp name="HTTPSampler.port">0</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -144,43 +144,7 @@
             <stringProp name="RandomTimer.range">100.0</stringProp>
           </UniformRandomTimer>
           <hashTree/>
-          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="ForEach Controller" enabled="true">
-            <stringProp name="ForeachController.inputVal">banking_services</stringProp>
-            <stringProp name="ForeachController.returnVal">each_service</stringProp>
-            <boolProp name="ForeachController.useSeparator">true</boolProp>
-            <stringProp name="ForeachController.startIndex">0</stringProp>
-            <stringProp name="ForeachController.endIndex">${banking_services_matchNr}</stringProp>
-          </ForeachController>
-          <hashTree>
-            <kg.apc.jmeter.samplers.DummySampler guiclass="kg.apc.jmeter.samplers.DummySamplerGui" testclass="kg.apc.jmeter.samplers.DummySampler" testname="Service Name: ${__V(banking_services_${__jm__ForEach Controller__idx})}" enabled="true">
-              <boolProp name="WAITING">true</boolProp>
-              <boolProp name="SUCCESFULL">true</boolProp>
-              <stringProp name="RESPONSE_CODE">200</stringProp>
-              <stringProp name="RESPONSE_MESSAGE">OK</stringProp>
-              <stringProp name="REQUEST_DATA">Dummy Sampler used to simulate requests and responses
-without actual network activity. This helps debugging tests.</stringProp>
-              <stringProp name="RESPONSE_DATA">Dummy Sampler used to simulate requests and responses
-without actual network activity. This helps debugging tests.</stringProp>
-              <stringProp name="RESPONSE_TIME">${__Random(50,500)}</stringProp>
-              <stringProp name="LATENCY">${__Random(1,50)}</stringProp>
-              <stringProp name="CONNECT">${__Random(1,5)}</stringProp>
-              <stringProp name="URL"></stringProp>
-              <stringProp name="RESULT_CLASS">org.apache.jmeter.samplers.SampleResult</stringProp>
-            </kg.apc.jmeter.samplers.DummySampler>
-            <hashTree/>
-          </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-            <boolProp name="displayJMeterProperties">false</boolProp>
-            <boolProp name="displayJMeterVariables">true</boolProp>
-            <boolProp name="displaySystemProperties">false</boolProp>
-          </DebugSampler>
-          <hashTree/>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-            <stringProp name="ConstantTimer.delay">0</stringProp>
-            <stringProp name="RandomTimer.range">100.0</stringProp>
-          </UniformRandomTimer>
-          <hashTree/>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">D:/Engineering/8th_Semester/Capgemini_Training/final_project/project4/username_password.csv</stringProp>
@@ -192,7 +156,7 @@ without actual network activity. This helps debugging tests.</stringProp>
             <stringProp name="variableNames">username,password</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/doLogin-7" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/doLogin-7">
             <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
             <stringProp name="HTTPSampler.port">0</stringProp>
@@ -345,9 +309,9 @@ without actual network activity. This helps debugging tests.</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Account-Summary" enabled="true"/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Account-Summary"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/bank/showAccount-9" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/bank/showAccount-9">
             <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
             <stringProp name="HTTPSampler.port">0</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -369,7 +333,7 @@ without actual network activity. This helps debugging tests.</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
@@ -400,7 +364,7 @@ without actual network activity. This helps debugging tests.</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Transfer-Funds" enabled="true"/>
+        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Transfer-Funds"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/bank/transfer.jsp-10" enabled="true">
             <stringProp name="HTTPSampler.domain">altoro.testfire.net</stringProp>
@@ -569,7 +533,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results">
+        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -643,7 +607,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -680,7 +644,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -718,7 +682,7 @@ without actual network activity. This helps debugging tests.</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="true">
+      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder">
         <stringProp name="ProxyControlGui.port">8889</stringProp>
         <collectionProp name="ProxyControlGui.exclude_list"/>
         <collectionProp name="ProxyControlGui.include_list"/>
