@@ -25,37 +25,37 @@ stages {
     stage('Run Test') {
         steps {
             bat '''
-            rmdir /s /q report
+            if exist report rmdir /s /q report
             apache-jmeter-5.6.3\\bin\\jmeter.bat -n -t test.jmx -l results.jtl -e -o report
             '''
         }
     }
-    
+
     stage('Performance Gate') {
         steps {
-        script {
-        def total = 0
-        def failed = 0
-        
-                def lines = readFile('results.jtl').split("\n")
-        
+            script {
+                def total = 0
+                def failed = 0
+
+                def lines = readFile('results.jtl').split("\\n")
+
                 for (int i = 1; i < lines.length; i++) {
                     def cols = lines[i].split(",")
-        
+
                     if (cols.length > 7) {
                         total++
-                        if (cols[7] == "false") {
+                        if (cols[7].trim() == "false") {
                             failed++
                         }
                     }
                 }
-        
-                def errorRate = (failed * 100.0) / total
-        
+
+                def errorRate = total > 0 ? (failed * 100.0) / total : 0
+
                 echo "Total Requests: ${total}"
                 echo "Failed Requests: ${failed}"
                 echo "Error Rate: ${errorRate}%"
-        
+
                 if (errorRate > 2) {
                     error "❌ Performance Gate Failed: Error rate > 2%"
                 } else {
@@ -63,7 +63,6 @@ stages {
                 }
             }
         }
-
     }
 
     stage('Archive Report') {
